@@ -1,0 +1,105 @@
+
+<div class="main">
+  <div class="my-page">
+    <div class="user-inf">
+      <div class="user-inf-header">
+        <p><%= @user.username %></p>
+      </div>
+      <div class="user-logo">
+       <i class="fas fa-user-circle"></i>
+      </div>
+      <div class="follow-btn">
+        <% unless current_user == @user %>
+          <% if current_user.following?(@user) %>
+            <%=link_to relationship_destroy_path(@user.id),method: :delete do%>
+              <p class="unfollow">Unfolllow</p>
+            <%end%> 
+          <% else %>
+            <%=link_to relationship_create_path(@user.id), method: :post do%>
+              <p class="follow">Folllow</p>
+            <%end%> 
+          <% end %>
+        <% end %>
+      </div>
+      <div class="switch">
+        <%if @user==current_user%>
+          <p class="tab ">following</p>
+          <p class="tab is-active"> My Tweet</p>
+        <%end%>
+      </div>
+      <div class="follow-counter">
+        <p>Following <%=@followings.count%></p>
+        <p>Follower <%=@followers.count%></p>
+        <p>Post <%=@tweets.count%></p>
+      </div>
+    </div>
+
+
+    <div class="follow-tweet ">
+      <div class="main-header my-page-header">
+        <%= link_to tweets_path  do%>
+          <p><i class="fas fa-undo-alt"></i>INDEX</p>
+          <%end%>
+          <%=link_to new_tweet_path do%>
+            <p><i class="fas fa-plus"></i>New</p>
+          <%end%> 
+      </div>
+      <div class="my-page-tweet">
+        <%Tweet.where(user_id:@followings.ids).order(id: "DESC").each do |t|%>
+            <div class="tweet">
+             
+              <%=link_to user_path(t.user.id) ,class:"index-name" do%>
+                  <p><%=t.user.username%></p>
+                <%end%>
+              
+              <p class="index-body"><%=t.body%></p>
+              <div class="tweet-menu">
+                <%=link_to tweet_path(t.id),class:"non-danger" do%>
+                  <p>show</p>
+                <%end%> 
+                <div class="like" id="likes_buttons_<%= t.id %>">
+                  <%= render partial: 'likes/like', locals: { tweet: t} %>
+                </div>
+              </div>
+            </div>
+          <%end%>
+      </div>
+    </div>
+    <div class="follow-tweet is-show">
+      <div class="main-header my-page-header">
+        <%= link_to tweets_path  do%>
+          <p><i class="fas fa-undo-alt"></i>INDEX</p>
+          <%end%>
+          <%=link_to new_tweet_path do%>
+            <p><i class="fas fa-plus"></i>New</p>
+          <%end%> 
+      </div>
+      <div class="my-page-tweet">
+        <%@tweets.each do |t|%>
+            <div class="tweet">
+              
+              <%=link_to user_path(t.user.id),class:"index-name" do%>
+                  <p><%=t.user.username%></p>
+                <%end%>
+              
+              <p class="index-body"><%=t.body%></p>
+              <div class="tweet-menu">
+                <div class="like" id="likes_buttons_<%= t.id %>">
+                  <%= render partial: 'likes/like', locals: { tweet: t} %>
+                </div>
+                <%=link_to tweet_path(t.id),class:"non-danger" do%>
+                  <p>show</p>
+                <%end%>  
+                <%=link_to edit_tweet_path(t.id),class:"non-danger" do%>
+                  <p>edit</p>
+                <%end%>  
+                <%=link_to tweet_path(t.id),method: :delete,class:"danger" do%>
+                  <p>delete</p>
+                <%end%> 
+              </div>
+            </div>
+          <%end%>
+      </div>
+    </div>
+  </div>
+</div>

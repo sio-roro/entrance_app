@@ -1,0 +1,36 @@
+
+<div class="main">
+  <div class="login-back">
+    <div class="login-form">
+      <h2>Log in</h2>
+
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+          <div class="form-group">
+            
+            <%= f.text_field :username, autofocus: true, autocomplete: "username",:placeholder => " Name"  %>
+          </div>
+          
+
+          <div class="form-group">
+            
+            <%= f.password_field :password, autocomplete: "current-password",:placeholder => " Password"  %>
+          </div>
+
+          <% if devise_mapping.rememberable? %>
+            <div class="form-group">
+              <%= f.check_box :remember_me %>
+              <%= f.label :remember_me %>
+            </div>
+          <% end %>
+
+          <div class="actions">
+            <i class="fas fa-arrow-right"></i><%= f.submit "Log in" %>
+          </div>
+        <% end %>
+
+        <div class="login-link-area">
+          <%= render "users/shared/links" %>
+        </div>
+    </div>
+  </div>
+</div>

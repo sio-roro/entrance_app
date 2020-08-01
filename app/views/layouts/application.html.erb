@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>EntranceApp</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.1/css/all.css">
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+  <header>
+    <%if user_signed_in?%>
+      <%=link_to user_path(current_user.id) do%>
+        <p class="user-link"><%=current_user.username%></p>
+      <%end%>
+      <%=link_to root_path do%>
+        <p>TOP</p>
+      <%end%>
+      <%=link_to tweets_path do%>
+        <p>INDEX</p>
+      <%end%>  
+      <%=link_to new_tweet_path do%>
+        <p>New</p>
+      <%end%> 
+      <%=link_to  destroy_user_session_path, method: :delete do%>
+        <p>Log Out</p>
+      <%end%> 
+    <%else%>
+      <%=link_to root_path do%>
+        <p>TOP</p>
+      <%end%>
+      <%=link_to  new_user_session_path do%>
+        <p>Log In</p>
+      <%end%>
+      <%=link_to   new_user_registration_path do%>
+        <p>Sign up</p>
+      <%end%>
+    <%end%>
+  </header>
+   <%if flash[:notice]%>
+        <div class="flash" id="flash">
+        <%= flash[:notice]%>
+        </div>
+    <%end%>
+    <%= yield %>
+  </body>
+</html>

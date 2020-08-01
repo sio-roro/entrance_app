@@ -1,0 +1,38 @@
+
+<div class="main">
+  <div class="main-back">
+    <div class="index">
+    <div class="main-header">
+    <%=link_to new_tweet_path do%>
+      <p><i class="fas fa-plus"></i>New</p>
+    <%end%> 
+    </div>
+      <%@tweets.each do |t|%>
+        <div class="tweet">
+          
+           <%=link_to user_path(t.user.id),class:"index-name" do%>
+              <p><%=t.user.username%></p>
+            <%end%>
+          
+          <p class="index-body"><%=t.body%></p>
+          <div class="tweet-menu">
+            <%=link_to tweet_path(t.id),class:"non-danger" do%>
+              <p>show</p>
+            <%end%>  
+            <%if current_user==t.user%>
+              <%=link_to edit_tweet_path(t.id),class:"non-danger" do%>
+                <p>edit</p>
+              <%end%>  
+              <%=link_to tweet_path(t.id),method: :delete,class:"danger" do%>
+                <p>delete</p>
+              <%end%> 
+            <%end%>
+            <div class="like" id="likes_buttons_<%= t.id %>">
+              <%= render partial: 'likes/like', locals: { tweet: t} %>
+            </div>
+          </div>
+        </div>
+      <%end%>
+    </div>
+  </div>
+</div>

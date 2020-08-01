@@ -1,0 +1,32 @@
+
+<div class="main">
+ 
+    <div class="main-back">
+      <div class="new">
+        <div class="main-header">
+          <%= link_to tweets_path  do%>
+          <p><i class="fas fa-undo-alt"></i>INDEX</p>
+          <%end%>
+        </div>
+    
+      <h1>Twitter</h1>
+        
+        <%= form_for @tweet do |f| %>
+          
+          <div class="field">
+          <h3>NEW POST!!</h3>
+            <%@tweet.errors.full_messages.each do |m|%>
+              <div class="error">
+                <%= m %>
+              </div>
+            <%end%>
+            <%= f.text_field :body%>
+            <p><i class="fas fa-arrow-right"></i><%= f.submit "Tweet" %></p>
+          </div>
+          
+        <% end %>
+        
+      </div>
+    </div>
+ 
+</div>
