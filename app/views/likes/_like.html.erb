@@ -1,9 +1,14 @@
 <% if current_user.already_liked?(tweet) %>
   <%=link_to like_delete_path(tweet.id), method: :delete, remote: true do%>
-     <i class="fas fa-heart like1"></i><%= tweet.likes.count %>
+     <i class="fas fa-heart like1"></i>
   <%end%>  
+  <div class="like-number"><%= tweet.likes.count %></div>
+  
+
 <% else %>
   <%=link_to like_path(tweet.id) , method: :post, remote: true do%>
-    <i class="far fa-heart like2"></i><%= tweet.likes.count %>
+    <i class="far fa-heart like2"></i>
   <%end%>  
+  <div class="like-number"><%= tweet.likes.count %></div>
+  
 <% end %>

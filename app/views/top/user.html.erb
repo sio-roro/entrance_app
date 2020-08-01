@@ -1,0 +1,24 @@
+<div class="main">
+  <div class="main-back">
+     <div class="main-header my-page-header">
+        <%= link_to tweets_path  do%>
+          <p><i class="fas fa-undo-alt"></i>INDEX</p>
+          <%end%>
+          <%=link_to new_tweet_path do%>
+            <p><i class="fas fa-plus"></i>New</p>
+          <%end%> 
+          <%=link_to user_path(current_user.id) do%>
+            <p><i class="fas fa-user"></i>My Page</p>
+          <%end%> 
+      </div>
+    <div class="user-index">
+      <%@users.each do |u|%>
+          <div class="user-box">
+              <%=link_to user_path(u.id) do%>
+                  <p class="user-link"><%=u.username%></p>
+              <%end%>
+          </div>
+        <%end%>  
+    </div>
+  </div>
+</div>

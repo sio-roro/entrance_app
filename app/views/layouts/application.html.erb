@@ -27,6 +27,9 @@
       <%=link_to  destroy_user_session_path, method: :delete do%>
         <p>Log Out</p>
       <%end%> 
+      <%=link_to user_index_path do %>
+        <p>Users</p>
+      <%end%>
     <%else%>
       <%=link_to root_path do%>
         <p>TOP</p>

@@ -6,7 +6,9 @@ Rails.application.routes.draw do
         registrations: 'users/registrations'
     }
   root 'top#hello'
+  get "hello/user"=>"top#user",as:"user_index"
   resources :tweets 
+  
 
   post "comment/create/:tweet_id"=>"comments#create",as:'tweet_comments'
   delete "comment/destroy/:id"=>"comments#destroy",as:"comment_destroy"

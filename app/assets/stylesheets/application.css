@@ -563,6 +563,13 @@ footer{
 /* like周辺---------------------------------------------- */
 .like{
   font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+.like-number{
+  color: #e9e9e9;
 }
 .like1{
   color: #dc143c;
@@ -798,4 +805,34 @@ footer{
   text-decoration: none;
   color: #9da59d;
   opacity: 0.5;
+}
+/* user-index--------------- */
+.user-index{
+  overflow: scroll;
+  margin-top: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.user-box{
+  width: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  border-bottom: 1px solid #9da59d;
+  
+}
+.user-box a{
+  text-decoration: none;
+  opacity: 0.7;
+  font-size: 30px;
+  margin: 5px 0 5px 2px;
+  filter: drop-shadow(10px 10px 10px rgba(0,0,0,0.9));
+}
+.user-box a:hover{
+transition: all 0.5s;
+opacity: 1;
+transform: translateY(2px);
+filter: drop-shadow(0px 0px 0px rgba(0,0,0,0.9));
 }
