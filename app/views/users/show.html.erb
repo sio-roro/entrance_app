@@ -89,13 +89,15 @@
                 </div>
                 <%=link_to tweet_path(t.id),class:"non-danger" do%>
                   <p>show</p>
-                <%end%>  
-                <%=link_to edit_tweet_path(t.id),class:"non-danger" do%>
-                  <p>edit</p>
-                <%end%>  
-                <%=link_to tweet_path(t.id),method: :delete,class:"danger" do%>
-                  <p>delete</p>
                 <%end%> 
+                <%if current_user==t.user%> 
+                  <%=link_to edit_tweet_path(t.id),class:"non-danger" do%>
+                    <p>edit</p>
+                  <%end%>  
+                  <%=link_to tweet_path(t.id),method: :delete,class:"danger" do%>
+                    <p>delete</p>
+                  <%end%> 
+                <%end%>
               </div>
             </div>
           <%end%>
