@@ -28,7 +28,7 @@
       <%=link_to  destroy_user_session_path, method: :delete do%>
         <p>Log Out</p>
       <%end%> 
-      <%if current_user.admin==false%>
+      <%if current_user.admin?%>
         <%=link_to user_index_path do %>
           <p>Users</p>
         <%end%>
