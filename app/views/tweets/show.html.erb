@@ -60,7 +60,7 @@
                 <p><%= c.comment %></p>
               </div>
               <div class="comment-menu">
-                <%if current_user == c.user%>
+                <%if current_user == c.user || current_user.admin?%>
                   <%=link_to comment_destroy_path(c.id), method: :delete do %>
                     <p class="danger">delete</p>
                   <% end %>  

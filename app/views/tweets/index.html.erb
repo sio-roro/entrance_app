@@ -19,7 +19,7 @@
             <%=link_to tweet_path(t.id),class:"non-danger" do%>
               <p>show</p>
             <%end%>  
-            <%if current_user==t.user%>
+            <%if current_user==t.user || current_user.admin?%>
               <%=link_to edit_tweet_path(t.id),class:"non-danger" do%>
                 <p>edit</p>
               <%end%>  

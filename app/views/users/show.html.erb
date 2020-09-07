@@ -3,7 +3,11 @@
   <div class="my-page">
     <div class="user-inf">
       <div class="user-inf-header">
-        <p><%= @user.username %></p>
+        <% if current_user == @user && current_user.admin? %>
+          <p><i class="fas fa-star"></i><%= @user.username %></p>
+        <%else%>
+          <p><%= @user.username %></p>
+        <%end%>
       </div>
       <div class="user-logo">
        <i class="fas fa-user-circle"></i>
