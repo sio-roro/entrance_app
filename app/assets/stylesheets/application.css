@@ -432,7 +432,7 @@ footer{
   border-bottom: 1px solid #e9e9e9;
 }
 .index-name{
- 
+  
   text-decoration: none;
 }
 .index-name p{
@@ -443,6 +443,9 @@ footer{
   color: #60caad;
   opacity: 0.8;
   filter: drop-shadow(5px 5px 5px rgba(0,0,0,0.6));
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 .index-name p:hover{
   opacity: 1;

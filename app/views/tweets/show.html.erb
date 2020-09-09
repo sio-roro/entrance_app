@@ -52,7 +52,11 @@
               <div class="comment-name">
                 <h3>
                   <%=link_to user_path(c.user.id),class:"user-link" do%>
-                    <%=c.user.username unless c.user.blank?%>
+                    <%if c.user.admin?%>
+                      <p><i class="fas fa-certificate"></i><%=c.user.username unless c.user.blank?%></p>
+                    <%else%>  
+                      <p><%=c.user.username unless c.user.blank?%></p>
+                    <%end%>  
                   <%end%>
                 </h3>
               </div>

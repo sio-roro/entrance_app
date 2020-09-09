@@ -3,8 +3,8 @@
   <div class="my-page">
     <div class="user-inf">
       <div class="user-inf-header">
-        <% if current_user == @user && current_user.admin? %>
-          <p><i class="fas fa-star"></i><%= @user.username %></p>
+        <% if @user.admin?  %>
+          <p><i class="fas fa-certificate"></i><%= @user.username %></p>
         <%else%>
           <p><%= @user.username %></p>
         <%end%>
@@ -53,8 +53,12 @@
             <div class="tweet">
              
               <%=link_to user_path(t.user.id) ,class:"index-name" do%>
-                  <p><%=t.user.username%></p>
-                <%end%>
+                <%if t.user.admin?%>
+                  <p><i class="fas fa-certificate"></i><%=t.user.username%></p>
+                <%else%>  
+                   <p><%=t.user.username%></p>
+                <%end%>   
+              <%end%>
               
               <p class="index-body"><%=t.body%></p>
               <div class="tweet-menu">

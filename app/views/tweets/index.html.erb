@@ -9,11 +9,15 @@
     </div>
       <%@tweets.each do |t|%>
         <div class="tweet">
-          
-           <%=link_to user_path(t.user.id),class:"index-name" do%>
+          <%if t.user.admin?%>
+            <%=link_to user_path(t.user.id),class:"index-name" do%>
+              <p><i class="fas fa-certificate"></i><%=t.user.username%></p>
+            <%end%>
+          <%else%>  
+            <%=link_to user_path(t.user.id),class:"index-name" do%>
               <p><%=t.user.username%></p>
             <%end%>
-          
+          <%end%>
           <p class="index-body"><%=t.body%></p>
           <div class="tweet-menu">
             <%=link_to tweet_path(t.id),class:"non-danger" do%>
