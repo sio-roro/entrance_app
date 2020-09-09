@@ -14,6 +14,10 @@ Rails.application.routes.draw do
   delete "comment/destroy/:id"=>"comments#destroy",as:"comment_destroy"
 
   resources :users, :only => [:show]
+
+  resources :messages, only: [:create]
+  resources :rooms, only: [:create,:show]
+  
   post "likes/:tweet_id"=>"likes#create",as:"like"
   delete "likes/:tweet_id"=>"likes#destroy",as:"like_delete"
   post "relationship/:id"=>"relationships#create",as:"relationship_create"

@@ -1,0 +1,49 @@
+
+<div class="main">
+  <div class="main-back">
+    <div class="new">
+      <h1 class="dm-header">
+      DM room
+       <% @entries.each do |e| %>
+        <div class="user-name">
+        <strong>
+              <p><%= e.user.username %></p>
+        </strong>
+        </div>
+      <% end %>
+      </h1>
+     
+      <hr>
+      <div class="chats">
+      <div class="dm-posts">
+          <%= form_for @message do |f| %>
+            <%= f.text_field :body, placeholder: "Type your message! " , size: 70, class:"form-text-field" %>
+              <%= f.hidden_field :room_id, value: @room.id %>
+                <%= f.submit "post!",class: 'form-submit'%>
+          <% end %>
+        <div class="chat">
+          <% if @messages.present? %>
+            <% @messages.each do |m| %>
+              <div class="chat-box">
+                <%if m.user.admin?%>
+                  <%=link_to user_path(m.user.id),class:"index-name" do%>
+                    <p><i class="fas fa-certificate"></i><%=m.user.username%></p>
+                  <%end%>
+                <%else%>  
+                  <%=link_to user_path(m.user.id),class:"index-name" do%>
+                    <p><%=m.user.username%></p>
+                  <%end%>
+                <%end%>
+                <div class="chat-hukidashi"> <strong><%= m.body %></strong> <br>
+                  <%= m.created_at.strftime("%Y-%m-%d %H:%M")%>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+        
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
