@@ -37,7 +37,7 @@
       <div class="comment-wapper">
         <div class="comment-header">
           <h2>Comment</h2>
-          <%= form_with(model: [@tweet, @comment], local: true) do |f| %>
+          <%= form_with(model: [@tweet,@comment], local: true) do |f| %>
             <div class="comment-btn">
               <%= f.text_field :comment,:placeholder => "Comment"%>
               <i class="fas fa-arrow-right"></i><%= f.submit "Post it" %>
