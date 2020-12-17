@@ -5,7 +5,6 @@ class TweetsController < ApplicationController
   
   def new 
     @tweet=Tweet.new
-   
   end 
 
   def show
@@ -45,8 +44,10 @@ class TweetsController < ApplicationController
     flash[:notice]="Your post was deleted!"
     redirect_to action: :index
   end
+
   private
   def tweet_params
     params.require(:tweet).permit(:body)
   end
+
 end
